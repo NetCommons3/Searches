@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendors/autoload.php">
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".ctp">app/Plugin/Searches</directory>
+            <directory suffix=".php">app/Plugin/Searches</directory>
+            <exclude>
+                <directory suffix=".php">app/Plugin/Searches/Config/Migration</directory>
+                <directory suffix=".php">app/Plugin/Searches/Config/Schema</directory>
+                <directory suffix=".php">app/Plugin/Searches/Test/Case</directory>
+                <directory suffix=".php">app/Plugin/Searches/Test/Fixture</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="coverage-html" target="build/logs/clover"/>
+    </logging>
+</phpunit>
