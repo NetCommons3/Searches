@@ -8,4 +8,4 @@ Searches for NetComomns3
 
 | dependencies  | status |
 | ------------- | ------ |
-| composer.json | [![Dependency Status](https://www.versioneye.com/user/projects/(versioneye_project_ID)/badge.png)](https://www.versioneye.com/user/projects/(versioneye_project_ID)) |
+| composer.json | [![Dependency Status](https://www.versioneye.com/user/projects/5726a7a919f62a000efbf83a/badge.png)](https://www.versioneye.com/user/projects/5726a7a919f62a000efbf83a) |
