@@ -25,6 +25,7 @@ class SearchesAppController extends AppController {
  * @var array
  */
 	public $components = array(
+		'Pages.PageLayout',
 		'Security'
 	);
 }
