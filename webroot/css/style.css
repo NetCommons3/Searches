@@ -1,0 +1,50 @@
+/**
+ * topics/css/style.css
+ *
+ * @author Shohei Nakajima <nakajimashouhei@gmail.com>
+ * @link http://www.netcommons.org NetCommons Project
+ * @license http://www.netcommons.org/license.txt NetCommons License
+ */
+
+/**
+ * 検索条件
+ */
+header.search-conditions:not(:last-child) {
+	padding-bottom: 16px;
+}
+article.topic-row-outer:first-child {
+	padding-top: 16px;
+}
+.searches-detailed-search {
+	margin-top: 4px;
+}
+
+.search-conditions .search-form-row:not(:last-child) {
+	margin-bottom: 8px;
+}
+.search-conditions .search-form-row.pull-left:not(:last-child) {
+	margin-right: 16px;
+}
+.search-conditions .form-group.pull-left input[datetimepicker="1"] {
+	width: 120px;
+}
+
+.search-conditions .searches-plugin-checkbox-outer > .checkbox {
+	margin-right: 24px;
+	float: left;
+	white-space: nowrap;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+.search-conditions .searches-plugin-checkbox-outer > .checkbox input[type="checkbox"] {
+	margin-left: 0px;
+}
+
+/**
+ * 検索結果
+ */
+.search-paging {
+	margin-bottom: 8px;
+	font-weight: 700;
+	text-align: right;
+}
