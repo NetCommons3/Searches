@@ -16,6 +16,56 @@ msgstr ""
 "X-Generator: Poedit 1.8.1\n"
 
 #
+#: 検索条件
+#
+
+msgid "Entry keywords"
+msgstr "キーワードを入力してください。"
+
+msgid "Free keywords."
+msgstr "フリーワード"
+
+msgid "Clear"
+msgstr "条件クリア"
+
+msgid "Detailed search"
+msgstr "詳細検索"
+
+msgid "Close detailed search"
+msgstr "閉じる"
+
+msgid "AND search"
+msgstr "すべて（AND検索）"
+
+msgid "OR search"
+msgstr "いずれか（OR検索）"
+
+msgid "Phrse search"
+msgstr "完全一致（フレーズ）"
+
+msgid "Entry handle name"
+msgstr "ハンドルを入力してください。"
+
+msgid "Period"
+msgstr "期間"
+
+msgid "Not room specify"
+msgstr "ルームを指定する"
+
+msgid "Plugins"
+msgstr "検索対象のプラグイン"
+
+#
+#: 検索結果
+#
+
+msgid "%s of %s (Total: %s)"
+msgstr "%s / %s ページ（総件数: %s件）"
+
+msgid "Not found."
+msgstr "検索条件に一致するデータがありません。"
+
+#
 #: 表示方法変更
 #
 

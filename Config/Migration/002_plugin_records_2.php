@@ -60,6 +60,7 @@ class PluginRecords2 extends NetCommonsMigration {
 	public function after($direction) {
 		$Plugin = $this->generateModel('Plugin');
 		$update = array(
+			'default_action' => '\'searches/index\'',
 			'default_setting_action' => '\'search_frame_settings/edit\''
 		);
 		$conditions = array(

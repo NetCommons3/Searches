@@ -39,9 +39,10 @@ class SearchFrameSettingsController extends SearchesAppController {
 		),
 		'PluginManager.PluginsForm' => array('findOptions' => array(
 			'conditions' => array(
-				'Plugin.display_topics' => true,
+				'Plugin.display_search' => true,
 			),
 		)),
+		'Security'
 	);
 
 /**
@@ -76,10 +77,6 @@ class SearchFrameSettingsController extends SearchesAppController {
  */
 	public function edit() {
 		$this->PluginsForm->setPluginsRoomForCheckbox($this, $this->PluginsForm->findOptions);
-
-		$options = Hash::extract(
-			$this->viewVars['pluginsRoom'], '{n}.Plugin.key'
-		);
 
 		if ($this->request->is('put') || $this->request->is('post')) {
 			//登録処理
