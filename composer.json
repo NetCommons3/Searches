@@ -21,7 +21,11 @@
     "authors": [
         {
             "name": "NetCommons Community",
-            "homepage": "https://github.com/NetCommons3/Searches/graphs/contributors"
+            "homepage": "http://www.netcommons.org"
+        },
+        {
+            "name": "NaKaZii Co., Ltd.",
+            "homepage": "https://github.com/s-nakajima"
         }
     ],
     "type":        "cakephp-plugin",
