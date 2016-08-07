@@ -88,8 +88,7 @@ class SearchFrameSettingsController extends SearchesAppController {
 			}
 
 			if ($this->SearchFrameSetting->saveSearchFrameSetting($data)) {
-				$this->redirect(NetCommonsUrl::backToPageUrl(true));
-				return;
+				return $this->redirect(NetCommonsUrl::backToPageUrl(true));
 			}
 			$this->NetCommons->handleValidationError($this->SearchFrameSetting->validationErrors);
 

@@ -13,7 +13,8 @@ App::uses('Search', 'Searches.Model');
 ?>
 
 <header class="search-conditions" ng-init="DetailedSearch=<?php echo Hash::get($query, 'detailed', 'false'); ?>">
-	<?php echo $this->NetCommonsForm->create(false, array('type' => 'get', 'url' => array('action' => 'search'))); ?>
+	<?php echo $this->NetCommonsForm->create(false,
+			array('type' => 'get', 'url' => NetCommonsUrl::actionUrlAsArray(array('action' => 'search')))); ?>
 
 		<?php echo $this->NetCommonsForm->hidden('frame_id', array('value' => Current::read('Frame.id'))); ?>
 		<?php echo $this->NetCommonsForm->hidden('detailed', array('ng-value' => 'DetailedSearch')); ?>
