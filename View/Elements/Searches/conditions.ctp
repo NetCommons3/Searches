@@ -134,11 +134,19 @@ App::uses('Search', 'Searches.Model');
 					__d('net_commons', 'Search'), array('name' => null)
 				);
 				//クリアボタン
-				echo $this->Button->cancel(
-					__d('searches', 'Clear'),
-					NetCommonsUrl::backToPageUrl(),
-					array('ng-disabled' => $this->params['action'] === 'index')
-				);
+				if (Current::read('Container.type') !== Container::TYPE_MAIN) {
+					echo $this->Button->cancel(
+						__d('searches', 'Clear'),
+						NetCommonsUrl::blockUrl(array('action' => 'index')),
+						array('ng-disabled' => $this->params['action'] === 'index')
+					);
+				} else {
+					echo $this->Button->cancel(
+						__d('searches', 'Clear'),
+						NetCommonsUrl::backToPageUrl(),
+						array('ng-disabled' => $this->params['action'] === 'index')
+					);
+				}
 			?>
 
 			<?php //詳細検索ボタン ?>
