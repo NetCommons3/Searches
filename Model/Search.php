@@ -143,7 +143,7 @@ class Search extends Topic {
 		//ハンドルの指定
 		if (Hash::get($requests, 'handle')) {
 			$conditions[] = $this->getStringCondtion(
-				'TrackableCreator.handkename',
+				'TrackableCreator.handlename',
 				Hash::get($requests, 'handle'),
 				Hash::get($requests, 'where_type', self::WHERE_TYPE_AND)
 			);
