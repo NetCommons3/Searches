@@ -70,6 +70,7 @@ class Search extends Topic {
 				$this->alias . '.title_icon',
 				$this->alias . '.summary',
 				$this->alias . '.path',
+				$this->alias . '.modified',
 			),
 			//Categoryフィールド
 			array_map(function ($field) {

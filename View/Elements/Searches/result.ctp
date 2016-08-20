@@ -24,6 +24,10 @@
 			</span>
 		</div>
 
+		<div class="pull-left topic-datetime">
+			<?php echo h($result['search']['displayModified']); ?>
+		</div>
+
 		<div class="pull-left topic-room-name">
 			<?php echo h($result['roomsLanguage']['displayName']); ?>
 		</div>
