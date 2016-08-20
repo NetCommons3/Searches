@@ -70,4 +70,4 @@ msgstr "検索条件に一致するデータがありません。"
 #
 
 msgid "Select plugin to default search"
-msgstr "指定したプラグインをデフォルトとする"
+msgstr "デフォルトで検索対象とするプラグイン"
