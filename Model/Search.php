@@ -110,12 +110,9 @@ class Search extends Topic {
 
 		if (Hash::get($requests, 'period_end')) {
 			$date = new DateTime(Hash::get($requests, 'period_end'));
-		} else {
-			$date = new DateTime((new NetCommonsTime)->toUserDatetime(gmdate('Y-m-d')));
+			$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d'));
+			$conditions[$this->alias . '.publish_start <'] = $periodEnd;
 		}
-		$date->add(new DateInterval('P1D'));
-		$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d H:i:s'));
-		$conditions[$this->alias . '.publish_start <'] = $periodEnd;
 
 		//プラグインの指定
 		if (Hash::get($requests, 'plugin_key')) {
