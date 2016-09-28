@@ -12,7 +12,9 @@
 App::uses('Search', 'Searches.Model');
 ?>
 
-<header class="search-conditions" ng-init="DetailedSearch=<?php echo Hash::get($query, 'detailed', 'false'); ?>">
+<header class="search-conditions" ng-init="DetailedSearch=<?php echo Hash::get($query, 'detailed', 'false'); ?>; hashChange();"
+			id="<?php echo sprintf(SearchesController::LINK_ID_FORMAT, Current::read('Frame.id')); ?>">
+
 	<?php echo $this->NetCommonsForm->create(false,
 			array('type' => 'get', 'url' => NetCommonsUrl::actionUrlAsArray(array('action' => 'search')))); ?>
 
@@ -137,13 +139,15 @@ App::uses('Search', 'Searches.Model');
 				if (Current::read('Container.type') !== Container::TYPE_MAIN) {
 					echo $this->Button->cancel(
 						__d('searches', 'Clear'),
-						NetCommonsUrl::blockUrl(array('action' => 'index')),
+						NetCommonsUrl::blockUrl(array('action' => 'index')) .
+							'#' . sprintf(SearchesController::LINK_ID_FORMAT, Current::read('Frame.id')),
 						array('ng-disabled' => $this->params['action'] === 'index')
 					);
 				} else {
 					echo $this->Button->cancel(
 						__d('searches', 'Clear'),
-						NetCommonsUrl::backToPageUrl(),
+						NetCommonsUrl::backToPageUrl() .
+							'#' . sprintf(SearchesController::LINK_ID_FORMAT, Current::read('Frame.id')),
 						array('ng-disabled' => $this->params['action'] === 'index')
 					);
 				}

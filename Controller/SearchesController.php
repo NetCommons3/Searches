@@ -20,6 +20,13 @@ App::uses('SearchesAppController', 'Searches.Controller');
 class SearchesController extends SearchesAppController {
 
 /**
+ * サイト内リンクのID
+ *
+ * @var int
+ */
+	const LINK_ID_FORMAT = 'search-box-%s';
+
+/**
  * 使用するComponent
  *
  * @var array
