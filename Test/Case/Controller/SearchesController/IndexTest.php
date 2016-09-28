@@ -27,6 +27,7 @@ class SearchesControllerIndexTest extends NetCommonsControllerTestCase {
 	public $fixtures = array(
 		'plugin.searches.search_frame_setting',
 		'plugin.searches.search_frames_plugin',
+		'plugin.searches.plugin4searches',
 		'plugin.topics.room4topics',
 		'plugin.topics.rooms_language4topics',
 		'plugin.topics.roles_room4topics',
@@ -110,6 +111,24 @@ class SearchesControllerIndexTest extends NetCommonsControllerTestCase {
 					'<option value="10">Community room 1</option>' .
 					'<option value="11">Community room 2</option>' .
 					'</select>';
+		$this->assertTextContains($expected, $view);
+
+		$expected = 'type="checkbox" name="plugin_key[]" checked="checked" value="bbses"';
+		$this->assertTextContains($expected, $view);
+
+		$expected = 'type="checkbox" name="plugin_key[]" checked="checked" value="blogs"';
+		$this->assertTextContains($expected, $view);
+
+		$expected = 'type="checkbox" name="plugin_key[]" checked="checked" value="announcements"';
+		$this->assertTextContains($expected, $view);
+
+		$expected = 'type="checkbox" name="plugin_key[]" value="faqs"';
+		$this->assertTextContains($expected, $view);
+
+		$expected = 'type="checkbox" name="plugin_key[]" value="circular_notices"';
+		$this->assertTextContains($expected, $view);
+
+		$expected = 'type="checkbox" name="plugin_key[]" value="calendars"';
 		$this->assertTextContains($expected, $view);
 	}
 
