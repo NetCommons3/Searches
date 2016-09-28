@@ -46,6 +46,7 @@ class SearchesController extends SearchesAppController {
  * @var array
  */
 	public $uses = array(
+		'PluginManager.Plugin',
 		'Rooms.Room',
 		'Searches.Search',
 		'Searches.SearchFrameSetting',
@@ -72,16 +73,12 @@ class SearchesController extends SearchesAppController {
 		$searchFrameSetting = $this->SearchFrameSetting->getSearchFrameSetting();
 		$this->set('searchFrameSetting', $searchFrameSetting);
 
-		if (Hash::get($this->request->query, 'frame_id') !== Current::read('Frame.id')) {
-			$query = array();
-		} else {
-			$query = array(
-				'plugin_key' => $searchFrameSetting['SearchFramesPlugin']['plugin_key'],
-			);
-			foreach ($this->request->query as $key => $value) {
-				if ($value) {
-					$query[$key] = $value;
-				}
+		$query = array(
+			'plugin_key' => $searchFrameSetting['SearchFramesPlugin']['plugin_key'],
+		);
+		foreach ($this->request->query as $key => $value) {
+			if ($value) {
+				$query[$key] = $value;
 			}
 		}
 		$this->set('query', Hash::remove($query, 'frame_id'));
@@ -97,7 +94,20 @@ class SearchesController extends SearchesAppController {
 		));
 
 		//検索プラグイン
-		$this->PluginsForm->setPluginsRoomForCheckbox($this, $this->PluginsForm->findOptions);
+		$plugins = $this->Plugin->find('all', Hash::merge(array(
+			'recursive' => -1,
+			'conditions' => array(
+				$this->Plugin->alias . '.type' => Plugin::PLUGIN_TYPE_FOR_FRAME,
+				$this->Plugin->alias . '.language_id' => Current::read('Language.id'),
+			),
+			'order' => array(
+				$this->Plugin->alias . '.weight' => 'asc',
+				$this->Plugin->alias . '.id' => 'asc',
+			)
+		), $this->PluginsForm->findOptions));
+
+		$this->set('pluginsRoom', $plugins);
+		//$this->PluginsForm->setPluginsRoomForCheckbox($this, $this->PluginsForm->findOptions);
 	}
 
 /**
