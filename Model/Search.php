@@ -110,12 +110,9 @@ class Search extends Topic {
 
 		if (Hash::get($requests, 'period_end')) {
 			$date = new DateTime(Hash::get($requests, 'period_end'));
-		} else {
-			$date = new DateTime((new NetCommonsTime)->toUserDatetime(gmdate('Y-m-d')));
+			$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d'));
+			$conditions[$this->alias . '.publish_end <'] = $periodEnd;
 		}
-		$date->add(new DateInterval('P1D'));
-		$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d H:i:s'));
-		$conditions[$this->alias . '.publish_start <'] = $periodEnd;
 
 		//プラグインの指定
 		if (Hash::get($requests, 'plugin_key')) {
@@ -134,7 +131,7 @@ class Search extends Topic {
 
 		//フリーワード
 		if (Hash::get($requests, 'keyword')) {
-			$conditions[] = $this->getStringCondtion(
+			$conditions[] = $this->getStringCondition(
 				$this->alias . '.search_contents',
 				Hash::get($requests, 'keyword'),
 				Hash::get($requests, 'where_type', self::WHERE_TYPE_AND)
@@ -143,7 +140,7 @@ class Search extends Topic {
 
 		//ハンドルの指定
 		if (Hash::get($requests, 'handle')) {
-			$conditions[] = $this->getStringCondtion(
+			$conditions[] = $this->getStringCondition(
 				'TrackableCreator.handlename',
 				Hash::get($requests, 'handle'),
 				Hash::get($requests, 'where_type', self::WHERE_TYPE_AND)
@@ -162,7 +159,7 @@ class Search extends Topic {
  * @param int $whereType 条件タイプ
  * @return array
  */
-	public function getStringCondtion($field, $searchValue, $whereType) {
+	public function getStringCondition($field, $searchValue, $whereType) {
 		if ($whereType === self::WHERE_TYPE_PHRASE) {
 			$values = array($searchValue);
 		} else {
