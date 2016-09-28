@@ -111,7 +111,7 @@ class Search extends Topic {
 		if (Hash::get($requests, 'period_end')) {
 			$date = new DateTime(Hash::get($requests, 'period_end'));
 			$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d'));
-			$conditions[$this->alias . '.publish_start <'] = $periodEnd;
+			$conditions[$this->alias . '.publish_end <'] = $periodEnd;
 		}
 
 		//プラグインの指定

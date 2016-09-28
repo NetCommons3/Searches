@@ -65,6 +65,102 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 		$result[0] = array(
 			'requests' => array(),
 		);
+		//期間(From)
+		$result[1] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'period_start' => '2016-08-31',
+				'where_type' => 'and',
+			),
+		);
+		//期間(To)
+		$result[2] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'period_end' => '2016-08-31',
+				'where_type' => 'and',
+			),
+		);
+		//ルーム
+		$result[3] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'room_id' => '4',
+				'where_type' => 'and',
+			),
+		);
+		//ブロック
+		$result[4] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'block_id' => '6',
+				'where_type' => 'and',
+			),
+		);
+		//フリーワード
+		$result[5] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'keyword' => 'NetCommons3 NC3',
+				'where_type' => 'and',
+			),
+		);
+		$result[6] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'keyword' => 'NetCommons3 NC3',
+				'where_type' => 'or',
+			),
+		);
+		$result[7] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'keyword' => 'NetCommons3 NC3',
+				'where_type' => 'phrase',
+			),
+		);
+		//ハンドル
+		$result[8] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'handle' => 'System Administrator',
+				'where_type' => 'and',
+			),
+		);
+		$result[9] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'handle' => 'System Administrator',
+				'where_type' => 'or',
+			),
+		);
+		$result[10] = array(
+			'requests' => array(
+				'plugin_key' => array(
+					'announcements', 'bbses', 'blogs'
+				),
+				'handle' => 'System Administrator',
+				'where_type' => 'phrase',
+			),
+		);
 
 		return $result;
 	}
@@ -97,8 +193,9 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
  *
  * @param array $requests リクエストパラメータ
  * @return array
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  */
-	public function __getExpected($requests) {
+	private function __getExpected($requests) {
 		$model = $this->_modelName;
 
 		//チェック
@@ -167,6 +264,54 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 				'Plugin.id', 'Plugin.key', 'Plugin.name',
 			),
 		);
+
+		if (Hash::get($requests, 'period_start')) {
+			$expected['conditions']['Search.publish_start >='] = '2016-08-30 15:00:00';
+		}
+		if (Hash::get($requests, 'period_end')) {
+			$expected['conditions']['Search.publish_end <'] = '2016-08-30 15:00:00';
+		}
+		if (Hash::get($requests, 'plugin_key')) {
+			$expected['conditions']['Search.plugin_key'] = array('announcements', 'bbses', 'blogs');
+		}
+		if (Hash::get($requests, 'room_id')) {
+			$expected['conditions']['Search.room_id'] = '4';
+		}
+		if (Hash::get($requests, 'block_id')) {
+			$expected['conditions']['Search.block_id'] = '6';
+		}
+
+		if (Hash::get($requests, 'keyword')) {
+			if (Hash::get($requests, 'where_type') === 'and') {
+				$expected['conditions'][]['AND'] = array(
+					0 => array('Search.search_contents LIKE' => '%NetCommons3%'),
+					1 => array('Search.search_contents LIKE' => '%NC3%'),
+				);
+			} elseif (Hash::get($requests, 'where_type') === 'or') {
+				$expected['conditions'][]['OR'] = array(
+					0 => array('Search.search_contents LIKE' => '%NetCommons3%'),
+					1 => array('Search.search_contents LIKE' => '%NC3%'),
+				);
+			} else {
+				$expected['conditions'][][0] = array('Search.search_contents LIKE' => '%NetCommons3 NC3%');
+			}
+		}
+
+		if (Hash::get($requests, 'handle')) {
+			if (Hash::get($requests, 'where_type') === 'and') {
+				$expected['conditions'][]['AND'] = array(
+					0 => array('TrackableCreator.handlename LIKE' => '%System%'),
+					1 => array('TrackableCreator.handlename LIKE' => '%Administrator%'),
+				);
+			} elseif (Hash::get($requests, 'where_type') === 'or') {
+				$expected['conditions'][]['OR'] = array(
+					0 => array('TrackableCreator.handlename LIKE' => '%System%'),
+					1 => array('TrackableCreator.handlename LIKE' => '%Administrator%'),
+				);
+			} else {
+				$expected['conditions'][][0] = array('TrackableCreator.handlename LIKE' => '%System Administrator%');
+			}
+		}
 
 		return $expected;
 	}
