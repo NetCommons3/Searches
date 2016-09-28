@@ -194,6 +194,8 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
  * @param array $requests リクエストパラメータ
  * @return array
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+ * @SuppressWarnings(PHPMD.NPathComplexity)
  */
 	private function __getExpected($requests) {
 		$model = $this->_modelName;
