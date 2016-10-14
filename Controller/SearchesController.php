@@ -81,6 +81,11 @@ class SearchesController extends SearchesAppController {
 				$query[$key] = $value;
 			}
 		}
+		if (Hash::get($query, 'detailed', 'false') === 'false') {
+			$query['detailed'] = 'false';
+		} else {
+			$query['detailed'] = 'true';
+		}
 		$this->set('query', Hash::remove($query, 'frame_id'));
 
 		//参加ルーム

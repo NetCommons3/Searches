@@ -12,7 +12,7 @@
 App::uses('Search', 'Searches.Model');
 ?>
 
-<header class="search-conditions" ng-init="DetailedSearch=<?php echo Hash::get($query, 'detailed', 'false'); ?>; hashChange();"
+<header class="search-conditions" ng-init="DetailedSearch=<?php echo h(Hash::get($query, 'detailed', 'false')); ?>; hashChange();"
 			id="<?php echo sprintf(SearchesController::LINK_ID_FORMAT, Current::read('Frame.id')); ?>">
 
 	<?php echo $this->NetCommonsForm->create(false,
