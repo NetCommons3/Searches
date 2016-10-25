@@ -25,6 +25,7 @@ class SearchesControllerIndexTest extends NetCommonsControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
+		'plugin.pages.page4pages',
 		'plugin.searches.search_frame_setting',
 		'plugin.searches.search_frames_plugin',
 		'plugin.searches.plugin4searches',
