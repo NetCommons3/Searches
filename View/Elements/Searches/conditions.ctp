@@ -10,6 +10,7 @@
  */
 
 App::uses('Search', 'Searches.Model');
+App::uses('SearchesController', 'Searches.Controller');
 ?>
 
 <header class="search-conditions" ng-init="DetailedSearch=<?php echo h(Hash::get($query, 'detailed', 'false')); ?>; hashChange();"
@@ -136,10 +137,10 @@ App::uses('Search', 'Searches.Model');
 					__d('net_commons', 'Search'), array('name' => null)
 				);
 				//クリアボタン
-				if (Current::read('Container.type') !== Container::TYPE_MAIN) {
+				if (Current::read('PageContainer.container_type') !== Container::TYPE_MAIN) {
 					echo $this->Button->cancel(
 						__d('searches', 'Clear'),
-						NetCommonsUrl::blockUrl(array('action' => 'index')) .
+						NetCommonsUrl::blockUrl(array('action' => 'index'), false) .
 							'#' . sprintf(SearchesController::LINK_ID_FORMAT, Current::read('Frame.id')),
 						array('ng-disabled' => $this->params['action'] === 'index')
 					);

@@ -25,6 +25,7 @@ class SearchesControllerIndexTest extends NetCommonsControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
+		'plugin.pages.page4pages',
 		'plugin.searches.search_frame_setting',
 		'plugin.searches.search_frames_plugin',
 		'plugin.searches.plugin4searches',
@@ -106,10 +107,10 @@ class SearchesControllerIndexTest extends NetCommonsControllerTestCase {
 
 		$expected = '<select name="room_id" class="form-control" id="room_id">' .
 					'<option value="">' . __d('searches', 'Not room specify') . '</option>' .
-					'<option value="1">Public</option>' .
-					'<option value="4">Public room</option>' .
-					'<option value="10">Community room 1</option>' .
-					'<option value="11">Community room 2</option>' .
+					'<option value="2">Public</option>' .
+					'<option value="5">Public room</option>' .
+					'<option value="11">Community room 1</option>' .
+					'<option value="12">Community room 2</option>' .
 					'</select>';
 		$this->assertTextContains($expected, $view);
 
