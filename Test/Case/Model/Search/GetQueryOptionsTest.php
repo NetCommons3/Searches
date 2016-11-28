@@ -262,7 +262,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 				'Category.id', 'Category.key', 'Category.name',
 				'Language.id', 'Language.code',
 				'Room.id', 'Room.space_id', 'RoomsLanguage.id', 'RoomsLanguage.name',
-				'Block.id', 'Block.key', 'Block.name',
+				'Block.id', 'Block.key', 'BlocksLanguage.name',
 				'Plugin.id', 'Plugin.key', 'Plugin.name',
 			),
 		);
