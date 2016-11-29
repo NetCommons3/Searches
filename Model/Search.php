@@ -88,9 +88,14 @@ class Search extends Topic {
 			array_map(function ($field) {
 				return 'RoomsLanguage.' . $field;
 			}, Hash::get($this->belongsTo, 'RoomsLanguage.fields', array())),
+			//Blockフィールド
 			array_map(function ($field) {
 				return 'Block.' . $field;
 			}, Hash::get($this->belongsTo, 'Block.fields', array())),
+			//BlocksLanguageフィールド
+			array_map(function ($field) {
+				return 'BlocksLanguage.' . $field;
+			}, Hash::get($this->belongsTo, 'BlocksLanguage.fields', array())),
 			//Pluginフィールド
 			array_map(function ($field) {
 				return 'Plugin.' . $field;
