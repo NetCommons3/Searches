@@ -1,0 +1,72 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Searches/Test/Case/Controller/SearchesController/IndexTest.php:109
+#: Searches/View/Elements/Searches/conditions.ctp:108
+msgid "Not room specify"
+msgstr ""
+
+#: Searches/View/Elements/SearchFrameSettings/edit_form.ctp:19
+msgid "Select plugin to default search"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:33
+msgid "Entry keywords"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:46
+msgid "Entry handle name"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:61
+msgid "AND search"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:62
+msgid "OR search"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:63
+msgid "Phrse search"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:117
+msgid "Plugins"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:142;149
+msgid "Clear"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:160
+msgid "Detailed search"
+msgstr ""
+
+#: Searches/View/Elements/Searches/conditions.ctp:164
+msgid "Close detailed search"
+msgstr ""
+
+#: Searches/View/Elements/Searches/paging.ctp:14
+msgid "%s of %s (Total: %s)"
+msgstr ""
+
+#: Searches/View/Searches/not_found.ctp:20
+msgid "Not found."
+msgstr ""
+
+#: Searches/View/Searches/simple_index.ctp:24
+msgid "Free keywords."
+msgstr ""
+
