@@ -116,7 +116,6 @@ class Search extends Topic {
 			$periodStart = (new NetCommonsTime)->toServerDatetime(Hash::get($requests, 'period_start'));
 			$conditions[$this->alias . '.publish_start >='] = $periodStart;
 		}
-
 		if (Hash::get($requests, 'period_end')) {
 			$date = new DateTime(Hash::get($requests, 'period_end'));
 			$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d'));
@@ -127,17 +126,14 @@ class Search extends Topic {
 		if (Hash::get($requests, 'plugin_key')) {
 			$conditions[$this->alias . '.plugin_key'] = Hash::get($requests, 'plugin_key');
 		}
-
 		//ルームの指定
 		if (Hash::get($requests, 'room_id')) {
 			$conditions[$this->alias . '.room_id'] = Hash::get($requests, 'room_id');
 		}
-
 		//ブロックの指定
 		if (Hash::get($requests, 'block_id')) {
 			$conditions[$this->alias . '.block_id'] = Hash::get($requests, 'block_id');
 		}
-
 		//フリーワード
 		if (Hash::get($requests, 'keyword')) {
 			$conditions[] = $this->getStringCondition(
@@ -146,7 +142,6 @@ class Search extends Topic {
 				Hash::get($requests, 'where_type', self::WHERE_TYPE_AND)
 			);
 		}
-
 		//ハンドルの指定
 		if (Hash::get($requests, 'handle')) {
 			$conditions[] = $this->getStringCondition(
