@@ -32,9 +32,9 @@
 			<?php echo h($result['roomsLanguage']['displayName']); ?>
 		</div>
 
-		<?php if ($result['category']['name']) : ?>
+		<?php if ($result['categoriesLanguage']['name']) : ?>
 			<div class="pull-left topic-category-name">
-				<?php echo h($result['category']['displayName']); ?>
+				<?php echo h($result['categoriesLanguage']['displayName']); ?>
 			</div>
 		<?php endif; ?>
 

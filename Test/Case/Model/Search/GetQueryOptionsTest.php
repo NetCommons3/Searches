@@ -259,7 +259,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 			'fields' => array(
 				'Search.id', 'Search.frame_id', 'Search.title', 'Search.title_icon',
 				'Search.summary', 'Search.path', 'Search.modified',
-				'Category.id', 'Category.key', 'Category.name',
+				'Category.id', 'Category.key', 'CategoriesLanguage.name',
 				'Language.id', 'Language.code',
 				'Room.id', 'Room.space_id', 'RoomsLanguage.id', 'RoomsLanguage.name',
 				'Block.id', 'Block.key', 'BlocksLanguage.name',

@@ -76,6 +76,10 @@ class Search extends Topic {
 			array_map(function ($field) {
 				return 'Category.' . $field;
 			}, Hash::get($this->belongsTo, 'Category.fields', array())),
+			//CategoriesLanguageフィールド
+			array_map(function ($field) {
+				return 'CategoriesLanguage.' . $field;
+			}, Hash::get($this->belongsTo, 'CategoriesLanguage.fields', array())),
 			//Languageフィールド
 			array_map(function ($field) {
 				return 'Language.' . $field;
