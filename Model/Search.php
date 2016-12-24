@@ -76,6 +76,10 @@ class Search extends Topic {
 			array_map(function ($field) {
 				return 'Category.' . $field;
 			}, Hash::get($this->belongsTo, 'Category.fields', array())),
+			//CategoriesLanguageフィールド
+			array_map(function ($field) {
+				return 'CategoriesLanguage.' . $field;
+			}, Hash::get($this->belongsTo, 'CategoriesLanguage.fields', array())),
 			//Languageフィールド
 			array_map(function ($field) {
 				return 'Language.' . $field;
@@ -88,9 +92,14 @@ class Search extends Topic {
 			array_map(function ($field) {
 				return 'RoomsLanguage.' . $field;
 			}, Hash::get($this->belongsTo, 'RoomsLanguage.fields', array())),
+			//Blockフィールド
 			array_map(function ($field) {
 				return 'Block.' . $field;
 			}, Hash::get($this->belongsTo, 'Block.fields', array())),
+			//BlocksLanguageフィールド
+			array_map(function ($field) {
+				return 'BlocksLanguage.' . $field;
+			}, Hash::get($this->belongsTo, 'BlocksLanguage.fields', array())),
 			//Pluginフィールド
 			array_map(function ($field) {
 				return 'Plugin.' . $field;
@@ -107,7 +116,6 @@ class Search extends Topic {
 			$periodStart = (new NetCommonsTime)->toServerDatetime(Hash::get($requests, 'period_start'));
 			$conditions[$this->alias . '.publish_start >='] = $periodStart;
 		}
-
 		if (Hash::get($requests, 'period_end')) {
 			$date = new DateTime(Hash::get($requests, 'period_end'));
 			$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d'));
@@ -118,17 +126,14 @@ class Search extends Topic {
 		if (Hash::get($requests, 'plugin_key')) {
 			$conditions[$this->alias . '.plugin_key'] = Hash::get($requests, 'plugin_key');
 		}
-
 		//ルームの指定
 		if (Hash::get($requests, 'room_id')) {
 			$conditions[$this->alias . '.room_id'] = Hash::get($requests, 'room_id');
 		}
-
 		//ブロックの指定
 		if (Hash::get($requests, 'block_id')) {
 			$conditions[$this->alias . '.block_id'] = Hash::get($requests, 'block_id');
 		}
-
 		//フリーワード
 		if (Hash::get($requests, 'keyword')) {
 			$conditions[] = $this->getStringCondition(
@@ -137,7 +142,6 @@ class Search extends Topic {
 				Hash::get($requests, 'where_type', self::WHERE_TYPE_AND)
 			);
 		}
-
 		//ハンドルの指定
 		if (Hash::get($requests, 'handle')) {
 			$conditions[] = $this->getStringCondition(
