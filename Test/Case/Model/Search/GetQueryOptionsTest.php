@@ -204,9 +204,11 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 		$expected = array(
 			'recursive' => 0,
 			'conditions' => array(
-				'TopicReadable.topic_id NOT' => null,
-				'Search.language_id' => '2',
 				0 => array(
+					'TopicReadable.topic_id NOT' => null,
+					'Search.language_id' => '2',
+				),
+				1 => array(
 					'OR' => array(
 						0 => array(
 							'Block.public_type' => '1',
@@ -228,7 +230,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 						),
 					),
 				),
-				1 => array(
+				2 => array(
 					'Search.is_no_member_allow' => true,
 					'OR' => array(
 						0 => array(
