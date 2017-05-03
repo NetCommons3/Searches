@@ -13,40 +13,40 @@
 <article class="topic-row-outer">
 	<div class="clearfix">
 		<div class="pull-left topic-title">
-			<a href="<?php echo $result['search']['url']; ?>" target="_blank">
-				<?php echo h($result['search']['displayTitle']); ?>
+			<a href="<?php echo $result['Search']['url']; ?>" target="_blank">
+				<?php echo h($result['Search']['display_title']); ?>
 			</a>
 		</div>
 
 		<div class="pull-left topic-plugin-name">
 			<span class="label label-default">
-				<?php echo h($result['plugin']['displayName']); ?>
+				<?php echo h($result['Plugin']['display_name']); ?>
 			</span>
 		</div>
 
 		<div class="pull-left topic-datetime">
-			<?php echo h($result['search']['displayModified']); ?>
+			<?php echo h($result['Search']['display_modified']); ?>
 		</div>
 
 		<div class="pull-left topic-room-name">
-			<?php echo h($result['roomsLanguage']['displayName']); ?>
+			<?php echo h($result['RoomsLanguage']['display_name']); ?>
 		</div>
 
-		<?php if ($result['categoriesLanguage']['name']) : ?>
+		<?php if ($result['CategoriesLanguage']['name']) : ?>
 			<div class="pull-left topic-category-name">
-				<?php echo h($result['categoriesLanguage']['displayName']); ?>
+				<?php echo h($result['CategoriesLanguage']['display_name']); ?>
 			</div>
 		<?php endif; ?>
 
 		<div class="pull-left topic-handle-name">
-			<?php echo $result['trackableCreator']['avatar']; ?>
-			<a ng-click="showUser($event, <?php echo $result['trackableCreator']['id']; ?>)" ng-controller="Users.controller" href="#">
-				<?php echo h($result['trackableCreator']['handlename']); ?>
+			<?php echo $result['TrackableCreator']['avatar']; ?>
+			<a ng-click="showUser($event, <?php echo $result['TrackableCreator']['id']; ?>)" ng-controller="Users.controller" href="#">
+				<?php echo h($result['TrackableCreator']['handlename']); ?>
 			</a>
 		</div>
 	</div>
 
 	<div class="text-muted topic-summary">
-		<?php echo $result['search']['displaySummary']; ?>
+		<?php echo $result['Search']['display_summary']; ?>
 	</div>
 </article>
