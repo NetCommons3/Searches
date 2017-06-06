@@ -123,7 +123,7 @@ class SearchesController extends SearchesAppController {
 	public function index() {
 		//左右上下かどうかの判断
 		$isNotCenter = Hash::get($this->request->params, 'requested') &&
-				Current::read('Container.type') !== Container::TYPE_MAIN;
+				Current::read('PageContainer.container_type') !== Container::TYPE_MAIN;
 		if ($isNotCenter) {
 			$this->view = 'simple_index';
 		} else {
