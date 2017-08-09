@@ -42,7 +42,7 @@ class PluginRecords extends NetCommonsMigration {
  */
 	public $records = array(
 		'Plugin' => array(
-			//日本�?
+			//日本語
 			array(
 				'language_id' => '2',
 				'key' => 'searches',
@@ -55,7 +55,7 @@ class PluginRecords extends NetCommonsMigration {
 				'default_setting_action' => 'search_frame_settings/index',
 				'is_m17n' => false,
 			),
-			//英�?
+			//英語
 			array(
 				'language_id' => '1',
 				'is_origin' => false,
@@ -75,7 +75,7 @@ class PluginRecords extends NetCommonsMigration {
 				'plugin_key' => 'searches',
 			),
 		),
-		//PluginsRoomは、beforeでセ�?トす�?
+		//PluginsRoomは、beforeでセットする
 	);
 
 /**
@@ -87,22 +87,22 @@ class PluginRecords extends NetCommonsMigration {
 	public function before($direction) {
 		$pluginName = $this->records['Plugin'][0]['key'];
 		$this->records['PluginsRoom'] = array(
-			//サイト�?��?
+			//サイト全体
 			array(
 				'room_id' => Space::getRoomIdRoot(Space::WHOLE_SITE_ID, 'Room'),
 				'plugin_key' => $pluginName
 			),
-			//パブリ�?クスペ�?�ス
+			//パブリクスペース
 			array(
 				'room_id' => Space::getRoomIdRoot(Space::PUBLIC_SPACE_ID, 'Room'),
 				'plugin_key' => $pluginName
 			),
-			//プライベ�?�トスペ�?�ス
+			//プライベートスペース
 			array(
 				'room_id' => Space::getRoomIdRoot(Space::PRIVATE_SPACE_ID, 'Room'),
 				'plugin_key' => $pluginName
 			),
-			//グループスペ�?�ス
+			//グループスペース
 			array(
 				'room_id' => Space::getRoomIdRoot(Space::COMMUNITY_SPACE_ID, 'Room'),
 				'plugin_key' => $pluginName
