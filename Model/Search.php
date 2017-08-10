@@ -171,18 +171,19 @@ class Search extends Topic {
 		}
 
 		$conditions = array();
-		if (SiteSettingUtil::read('Search.type') === SiteSetting::DATABASE_SEARCH_MATCH_AGAIN) {
-			if ($whereType === self::WHERE_TYPE_OR) {
-				$values = array_map(function ($val) {
-					return '"' . $val . '"';
-				}, $values);
-			} else {
-				$values = array_map(function ($val) {
-					return '+"' . $val . '"';
-				}, $values);
-			}
-			$conditions['MATCH (' . $field . ') AGAINST (? IN BOOLEAN MODE)'] = implode(' ', $values);
-		} else {
+		//暫定対処。後々、パフォーマンスを考慮し、MySQL5.6では、MATCH AGAINSTを使うようにする
+		//if (SiteSettingUtil::read('Search.type') === SiteSetting::DATABASE_SEARCH_MATCH_AGAIN) {
+		//	if ($whereType === self::WHERE_TYPE_OR) {
+		//		$values = array_map(function ($val) {
+		//			return '"' . $val . '"';
+		//		}, $values);
+		//	} else {
+		//		$values = array_map(function ($val) {
+		//			return '+"' . $val . '"';
+		//		}, $values);
+		//	}
+		//	$conditions['MATCH (' . $field . ') AGAINST (? IN BOOLEAN MODE)'] = implode(' ', $values);
+		//} else {
 			$conds = array();
 			foreach ($values as $val) {
 				$conds[] = array($field . ' LIKE' => '%' . $val . '%');
@@ -194,7 +195,7 @@ class Search extends Topic {
 			} else {
 				$conditions['AND'] = $conds;
 			}
-		}
+		//}
 
 		return $conditions;
 	}
