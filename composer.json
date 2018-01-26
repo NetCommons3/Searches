@@ -4,20 +4,23 @@
     "homepage": "http://www.netcommons.org/",
     "extra": {
         "installer-paths": {
-            "app/Plugin/{$name}": ["type:cakephp-plugin"]
+            "app/Plugin/{$name}": [
+                "type:cakephp-plugin"
+            ]
         }
     },
     "require": {
-        "cakedc/migrations":            "~2.2",
-        "netcommons/blocks":            "@dev",
-        "netcommons/net-commons":       "@dev",
-        "netcommons/pages":             "@dev",
-        "netcommons/plugin-manager":    "@dev",
-        "netcommons/rooms":             "@dev",
-        "netcommons/site-manager":      "@dev",
-        "netcommons/topics":            "@dev"
+        "cakedc/migrations": "~2.2",
+        "netcommons/blocks": "@dev",
+        "netcommons/net-commons": "@dev",
+        "netcommons/pages": "@dev",
+        "netcommons/plugin-manager": "@dev",
+        "netcommons/rooms": "@dev",
+        "netcommons/site-manager": "@dev",
+        "netcommons/topics": "@dev"
     },
-    "license": "NetCommons License",
+    "license": "LicenseRef-NetCommons",
+    "license-ref-net-commons": "https://raw.githubusercontent.com/NetCommons3/NetCommons3/master/license.txt",
     "authors": [
         {
             "name": "NetCommons Community",
@@ -28,10 +31,12 @@
             "homepage": "https://github.com/s-nakajima"
         }
     ],
-    "type":        "cakephp-plugin",
-    "keywords":    ["cakephp", "searches"],
+    "type": "cakephp-plugin",
+    "keywords": [
+        "cakephp",
+        "searches"
+    ],
     "config": {
         "vendor-dir": "vendors"
     }
 }
-
