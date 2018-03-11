@@ -114,12 +114,15 @@ class Search extends Topic {
 		$conditions = $options['conditions'];
 		if (Hash::get($requests, 'period_start')) {
 			$periodStart = (new NetCommonsTime)->toServerDatetime(Hash::get($requests, 'period_start'));
-			$conditions[$this->alias . '.publish_start >='] = $periodStart;
+			$conditions[$this->alias . '.modified >='] = $periodStart;
+
 		}
 		if (Hash::get($requests, 'period_end')) {
 			$date = new DateTime(Hash::get($requests, 'period_end'));
+			// 当日を含むため+1日　例：period_end=2018-3-11の場合、3-11 0:00より小さい日を検索するため、3-11が含まれないため、+1日した3-12 0:00で検索して当日を含める
+			$date->modify('+1 day');
 			$periodEnd = (new NetCommonsTime)->toServerDatetime($date->format('Y-m-d'));
-			$conditions[$this->alias . '.publish_end <'] = $periodEnd;
+			$conditions[$this->alias . '.modified <'] = $periodEnd;
 		}
 
 		//プラグインの指定
