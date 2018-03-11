@@ -71,7 +71,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 				'plugin_key' => array(
 					'announcements', 'bbses', 'blogs'
 				),
-				'period_start' => '2016-08-31',
+				'modified' => '2016-08-31',
 				'where_type' => 'and',
 			),
 		);
@@ -81,7 +81,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 				'plugin_key' => array(
 					'announcements', 'bbses', 'blogs'
 				),
-				'period_end' => '2016-08-31',
+				'modified' => '2016-08-31',
 				'where_type' => 'and',
 			),
 		);
@@ -185,7 +185,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 		//チェック
 		$expected = $this->__getExpected($requests);
 
-		$this->assertEquals($result, $expected);
+		$this->assertEquals($expected, $result);
 	}
 
 /**
