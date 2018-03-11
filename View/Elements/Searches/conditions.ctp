@@ -93,7 +93,9 @@ App::uses('SearchesController', 'Searches.Controller');
 							'div' => false,
 							'error' => false,
 							'datetimepicker-options' => '{\'format\': \'YYYY-MM-DD\'}',
-							'value' => Hash::get($query, 'period_end'),
+							'ng-model' => 'PeriodEnd',
+							'ng-init' => 'PeriodEnd=\'' . Hash::get($query, 'period_end') . '\'',
+							'ng-value' => 'PeriodEnd',
 						)); ?>
 					</div>
 				</div>
