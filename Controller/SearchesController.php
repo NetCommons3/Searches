@@ -92,14 +92,21 @@ class SearchesController extends SearchesAppController {
 		$result = $this->Room->find('all', $this->Room->getReadableRoomsConditions(array(
 			'Room.space_id !=' => Space::PRIVATE_SPACE_ID
 		)));
-		$this->set('rooms', Hash::combine(
-			$result,
-			'{n}.Room.id',
-			'{n}.RoomsLanguage.{n}[language_id=' . Current::read('Language.id') . '].name'
-		));
+		$rooms = [];
+		$currentLangId = Current::read('Language.id');
+		foreach ($result as $room) {
+			$roomId = $room['Room']['id'];
+			foreach ($room['RoomsLanguage'] as $roomLanguage) {
+				if ($currentLangId == $roomLanguage['language_id']) {
+					$rooms[$roomId] = $roomLanguage['name'];
+					break;
+				}
+			}
+		}
+		$this->set('rooms', $rooms);
 
 		//検索プラグイン
-		$plugins = $this->Plugin->find('all', Hash::merge(array(
+		$plugins = $this->Plugin->cacheFindQuery('all', Hash::merge(array(
 			'recursive' => -1,
 			'conditions' => array(
 				$this->Plugin->alias . '.type' => Plugin::PLUGIN_TYPE_FOR_FRAME,
