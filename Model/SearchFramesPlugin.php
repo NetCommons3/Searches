@@ -88,7 +88,7 @@ class SearchFramesPlugin extends SearchesAppModel {
 			array('display_topics' => true, 'language_id' => Current::read('Language.id', '0')),
 			$conditions
 		);
-		$plugin = $this->Plugin->find('list', array(
+		$plugin = $this->Plugin->cacheFindQuery('list', array(
 			'recursive' => -1,
 			'fields' => array('key', 'name'),
 			'conditions' => $conditions,
