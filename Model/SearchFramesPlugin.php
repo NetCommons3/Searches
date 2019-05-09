@@ -38,7 +38,7 @@ class SearchFramesPlugin extends SearchesAppModel {
  * @throws BadRequestException
  */
 	public function beforeValidate($options = array()) {
-		$this->validate = Hash::merge($this->validate, array(
+		$this->validate = ValidateMerge::merge($this->validate, array(
 			'frame_key' => array(
 				'notBlank' => array(
 					'rule' => array('notBlank'),
