@@ -91,7 +91,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 				'plugin_key' => array(
 					'announcements', 'bbses', 'blogs'
 				),
-				'room_id' => '5',
+				'target_room_id' => '5',
 				'where_type' => 'and',
 			),
 		);
@@ -278,7 +278,7 @@ class SearchGetQueryOptionsTest extends NetCommonsGetTest {
 		if (Hash::get($requests, 'plugin_key')) {
 			$expected['conditions']['Search.plugin_key'] = array('announcements', 'bbses', 'blogs');
 		}
-		if (Hash::get($requests, 'room_id')) {
+		if (Hash::get($requests, 'target_room_id')) {
 			$expected['conditions']['Search.room_id'] = '5';
 		}
 		if (Hash::get($requests, 'block_id')) {

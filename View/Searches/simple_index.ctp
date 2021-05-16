@@ -18,6 +18,11 @@
 		<div class="input-group">
 			<?php
 				//フリーワード入力部品
+				if ($isSafari) {
+					$class = null;
+				} else {
+					$class = '{"allow-submit": SimpleSearch}';
+				}
 				echo $this->NetCommonsForm->input('keyword', array(
 					'label' => false,
 					'div' => false,
@@ -25,7 +30,7 @@
 					'ng-model' => 'SimpleSearch',
 					'ng-init' => 'SimpleSearch=\'' . h(Hash::get($query, 'keyword')) . '\'',
 					'ng-value' => 'SimpleSearch',
-					'ng-class' => '{"allow-submit": SimpleSearch}'
+					'ng-class' => $class
 				));
 			?>
 			<span class="input-group-btn">

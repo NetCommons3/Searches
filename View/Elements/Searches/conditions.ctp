@@ -25,11 +25,16 @@ App::uses('SearchesController', 'Searches.Controller');
 		<div>
 			<div class="form-group search-form-row">
 				<?php
+					if ($isSafari) {
+						$class = 'form-control';
+					} else {
+						$class = 'form-control allow-submit';
+					}
 					//フリーワード
 					echo $this->NetCommonsForm->input('keyword', array(
 						'label' => false,
 						'div' => false,
-						'class' => 'form-control allow-submit',
+						'class' => $class,
 						'placeholder' => __d('searches', 'Entry keywords'),
 						'value' => Hash::get($query, 'keyword'),
 					));
@@ -103,12 +108,12 @@ App::uses('SearchesController', 'Searches.Controller');
 				<div class="form-group form-inline pull-left search-form-row" ng-show="DetailedSearch" ng-cloak>
 					<?php
 						//ルーム
-						echo $this->NetCommonsForm->input('room_id', array(
+						echo $this->NetCommonsForm->input('target_room_id', array(
 							'label' => false,
 							'div' => false,
 							'error' => false,
 							'options' => ['' => __d('searches', 'Not room specify')] + $rooms,
-							'value' => Hash::get($query, 'room_id'),
+							'value' => Hash::get($query, 'target_room_id'),
 						));
 					?>
 				</div>
