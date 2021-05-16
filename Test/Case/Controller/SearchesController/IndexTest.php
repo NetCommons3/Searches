@@ -106,7 +106,7 @@ class SearchesControllerIndexTest extends NetCommonsControllerTestCase {
 		$this->assertInput('input', 'period_start', null, $view);
 		$this->assertInput('input', 'period_end', null, $view);
 
-		$expected = '<select name="room_id" class="form-control" id="room_id">' .
+		$expected = '<select name="target_room_id" class="form-control" id="target_room_id">' .
 					'<option value="">' . __d('searches', 'Not room specify') . '</option>' .
 					'<option value="2">Public</option>' .
 					'<option value="5">Public room</option>' .

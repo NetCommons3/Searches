@@ -130,8 +130,8 @@ class Search extends Topic {
 			$conditions[$this->alias . '.plugin_key'] = Hash::get($requests, 'plugin_key');
 		}
 		//ルームの指定
-		if (Hash::get($requests, 'room_id')) {
-			$conditions[$this->alias . '.room_id'] = Hash::get($requests, 'room_id');
+		if (Hash::get($requests, 'target_room_id')) {
+			$conditions[$this->alias . '.room_id'] = Hash::get($requests, 'target_room_id');
 		}
 		//ブロックの指定
 		if (Hash::get($requests, 'block_id')) {
