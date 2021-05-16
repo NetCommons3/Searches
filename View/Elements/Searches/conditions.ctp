@@ -25,11 +25,16 @@ App::uses('SearchesController', 'Searches.Controller');
 		<div>
 			<div class="form-group search-form-row">
 				<?php
+					if ($isSafari) {
+						$class = 'form-control';
+					} else {
+						$class = 'form-control allow-submit';
+					}
 					//フリーワード
 					echo $this->NetCommonsForm->input('keyword', array(
 						'label' => false,
 						'div' => false,
-						'class' => 'form-control allow-submit',
+						'class' => $class,
 						'placeholder' => __d('searches', 'Entry keywords'),
 						'value' => Hash::get($query, 'keyword'),
 					));

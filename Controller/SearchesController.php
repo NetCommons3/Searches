@@ -14,6 +14,10 @@ App::uses('SearchesAppController', 'Searches.Controller');
 /**
  * Searches Controller
  *
+ * @property PaginatorComponent $Paginator
+ * @property PluginsFormComponent $PluginsForm
+ * @property MobileDetectComponent $MobileDetect
+ *
  * @author Shohei Nakajima <nakajimashouhei@gmail.com>
  * @package NetCommons\Searches\Controller
  */
@@ -38,6 +42,7 @@ class SearchesController extends SearchesAppController {
 				'Plugin.display_search' => true,
 			),
 		)),
+		'MobileDetect.MobileDetect',
 	);
 
 /**
@@ -69,6 +74,8 @@ class SearchesController extends SearchesAppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('search');
+
+		$this->set('isSafari', $this->MobileDetect->detect('isSafari'));
 
 		$searchFrameSetting = $this->SearchFrameSetting->getSearchFrameSetting();
 		$this->set('searchFrameSetting', $searchFrameSetting);
