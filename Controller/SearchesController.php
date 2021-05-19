@@ -75,8 +75,6 @@ class SearchesController extends SearchesAppController {
 		parent::beforeFilter();
 		$this->Auth->allow('search');
 
-		$this->set('isSafari', $this->MobileDetect->detect('isSafari'));
-
 		$searchFrameSetting = $this->SearchFrameSetting->getSearchFrameSetting();
 		$this->set('searchFrameSetting', $searchFrameSetting);
 
